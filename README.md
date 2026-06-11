@@ -16,20 +16,48 @@ This repository currently contains the Phase 1 proof-of-concept:
 
 ## Quickstart
 
+Install from crates.io:
+
 ```bash
-cargo run -- run echo "hello from now"
+cargo install nowcli
+```
+
+Run a command in an ephemeral environment:
+
+```bash
+now run echo "hello from now"
 ```
 
 In a Node project:
 
 ```bash
-cargo run -- run npm install
+now run npm install
 ```
 
 To force an image:
 
 ```bash
-cargo run -- run --image alpine:latest echo "hello"
+now run --image alpine:latest echo "hello"
+```
+
+## Development
+
+Install the local checkout as the `now` executable:
+
+```bash
+cargo install --path . --force
+```
+
+Run from source without installing:
+
+```bash
+cargo run -- run echo "hello from now"
+```
+
+Run the repository build task:
+
+```bash
+now run build
 ```
 
 ## Roadmap
