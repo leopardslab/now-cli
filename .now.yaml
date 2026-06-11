@@ -1,0 +1,31 @@
+commands:
+  build:
+    steps:
+      - host: true
+        run: cargo fmt --all -- --check
+      - host: true
+        run: cargo check --locked
+      - host: true
+        run: cargo clippy --locked --all-targets -- -D warnings
+      - host: true
+        run: cargo test --locked
+      - host: true
+        run: cargo build --release --locked
+
+  publish-dry-run:
+    steps:
+      - host: true
+        run: cargo publish --dry-run --allow-dirty
+
+  deploy:
+    steps:
+      - host: true
+        run: cargo fmt --all -- --check
+      - host: true
+        run: cargo check --locked
+      - host: true
+        run: cargo clippy --locked --all-targets -- -D warnings
+      - host: true
+        run: cargo test --locked
+      - host: true
+        run: cargo publish
